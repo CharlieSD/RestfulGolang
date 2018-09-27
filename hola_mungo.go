@@ -12,6 +12,10 @@ func main() {
 
 	pais := "México" // Asignación inferida
 
+	const year int = 2018
+
+	fmt.Println(year)
+
 	fmt.Println("Hola Mundo desde Go con " + nombre + apellido + " desde " + pais)
 	fmt.Println(suma)
 	fmt.Println(resta)
