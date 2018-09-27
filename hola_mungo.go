@@ -17,6 +17,19 @@ func main() {
 	calculadora(num3, num4)
 	fmt.Println("-------------")
 	fmt.Println(devolverDatos())
+	fmt.Println("-------------")
+	fmt.Print("Pedido 1 ---->")
+	fmt.Println(gorras(45, "€"))
+	fmt.Print("Pedido 2 ---->")
+	fmt.Println(gorras(24, "$"))
+}
+
+func gorras(pedido float32, moneda string) (string, float32, string) {
+	precio := func() float32 {
+		return pedido * 7
+	}
+
+	return "El precio del pedido: ", precio(), moneda
 }
 
 func holaMundo() {
