@@ -25,18 +25,31 @@ func main() {
 
 	pantalon("mezclilla", "azul", "largo", "Sin bolsillos", "Levis")*/
 
-	var peliculas [3]string
+	/* var peliculas [3]string
 	peliculas[0] = "Batman v Superman"
 	peliculas[1] = "Avengers 3"
 	peliculas[2] = "Interestelar"
 
-	peliculas2 := [3]string{
-		"Justice League",
-		"Lego Batman",
-		"Batman return"}
+	peliculas2 := [3]string{"Justice League", "Lego Batman", "Batman return"}
 
 	fmt.Println(peliculas)
-	fmt.Println(peliculas2)
+	fmt.Println(peliculas2) */
+	columnas := [8]string{"a", "b", "c", "d", "e", "f", "g", "h"}
+	filas := [8]string{"1", "2", "3", "4", "5", "6", "7", "8"}
+
+	var tablero [8][8]string
+	for i, col := range columnas {
+		for j, fila := range filas {
+			tablero[i][j] = col + fila
+		}
+	}
+
+	for i := range columnas {
+		for j := range filas {
+			fmt.Print(tablero[i][j] + " ")
+		}
+		fmt.Println()
+	}
 }
 
 func pantalon(caracteristicas ...string) {
