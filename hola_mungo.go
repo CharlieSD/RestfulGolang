@@ -22,6 +22,14 @@ func main() {
 	fmt.Println(gorras(45, "€"))
 	fmt.Print("Pedido 2 ---->")
 	fmt.Println(gorras(24, "$"))
+
+	pantalon("mezclilla", "azul", "largo", "Sin bolsillos", "Levis")
+}
+
+func pantalon(caracteristicas ...string) {
+	for _, caracteristica := range caracteristicas {
+		fmt.Println(caracteristica)
+	}
 }
 
 func gorras(pedido float32, moneda string) (string, float32, string) {
