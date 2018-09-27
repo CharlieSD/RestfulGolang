@@ -12,19 +12,19 @@ type Gorra struct {
 }
 
 func main() {
-	var gorra_negra = Gorra{
+	var gorraNegra = Gorra{
 		marca:  "Nike",
 		color:  "Negro",
 		precio: 25.50,
 		plana:  false}
 
-	var gorra_roja = Gorra{"Adidas", "Roja", 25.50, false}
+	var gorraRoja = Gorra{"Adidas", "Roja", 25.50, false}
 
 	var numero1 = 10.0
 	var numero2 = 6.0
 
-	fmt.Println(gorra_negra)
-	fmt.Println(gorra_roja)
+	fmt.Println(gorraNegra)
+	fmt.Println(gorraRoja)
 
 	fmt.Print("La suma es: ")
 	fmt.Println(numero1 + numero2)
