@@ -1,4 +1,0 @@
-6.Mongo
-7.Java
-7.Java
-7.Haskwell
