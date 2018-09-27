@@ -1,7 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	// "time"
+)
 
 func main() {
+	// time.Sleep(time.Second * 5)
 	fmt.Println("Hola Mundo desde Go con Charlie Espinoza")
 }
