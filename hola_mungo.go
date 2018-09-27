@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	var num1 float32 = 10.0
+	/*var num1 float32 = 10.0
 	var num2 float32 = 6.0
 	holaMundo()
 	fmt.Println("Calculadora 1")
@@ -23,7 +23,42 @@ func main() {
 	fmt.Print("Pedido 2 ---->")
 	fmt.Println(gorras(24, "$"))
 
-	pantalon("mezclilla", "azul", "largo", "Sin bolsillos", "Levis")
+	pantalon("mezclilla", "azul", "largo", "Sin bolsillos", "Levis")*/
+
+	/* var peliculas [3]string
+	peliculas[0] = "Batman v Superman"
+	peliculas[1] = "Avengers 3"
+	peliculas[2] = "Interestelar"
+
+	peliculas2 := [3]string{"Justice League", "Lego Batman", "Batman return"}
+
+	fmt.Println(peliculas)
+	fmt.Println(peliculas2) */
+	/*
+		columnas := [8]string{"a", "b", "c", "d", "e", "f", "g", "h"}
+		filas := [8]string{"1", "2", "3", "4", "5", "6", "7", "8"}
+
+		var tablero [8][8]string
+		for i, col := range columnas {
+			for j, fila := range filas {
+				tablero[i][j] = col + fila
+			}
+		}
+
+		for i := range columnas {
+			for j := range filas {
+				fmt.Print(tablero[i][j] + " ")
+			}
+			fmt.Println()
+		} */
+
+	peliculas := []string{}
+	peliculas = append(peliculas, "Batman")
+	peliculas = append(peliculas, "Batman v Superman")
+	peliculas = append(peliculas, "Lego Batman")
+	peliculas = append(peliculas, "Batman Return")
+
+	fmt.Println(peliculas)
 }
 
 func pantalon(caracteristicas ...string) {
