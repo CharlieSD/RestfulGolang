@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"os"
 	"strconv"
+	"time"
 )
 
 func main() {
@@ -30,4 +31,27 @@ func main() {
 	for _, pelicula := range peliculas {
 		fmt.Println(pelicula)
 	}
+
+	hoy := time.Now()
+	dia := hoy.Weekday()
+
+	switch dia {
+	case 0:
+		fmt.Println("Hoy es domingo")
+	case 1:
+		fmt.Println("Hoy es lunes")
+	case 2:
+		fmt.Println("Hoy es martes")
+	case 3:
+		fmt.Println("Hoy es miercoles")
+	case 4:
+		fmt.Println("Hoy es jueves")
+	case 5:
+		fmt.Println("Hoy es viernes")
+	case 6:
+		fmt.Println("Hoy es sábado")
+	default:
+		fmt.Println("No se puede determinar el día")
+	}
+
 }
