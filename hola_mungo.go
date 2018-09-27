@@ -5,7 +5,7 @@ import (
 )
 
 func main() {
-	var num1 float32 = 10.0
+	/*var num1 float32 = 10.0
 	var num2 float32 = 6.0
 	holaMundo()
 	fmt.Println("Calculadora 1")
@@ -23,7 +23,20 @@ func main() {
 	fmt.Print("Pedido 2 ---->")
 	fmt.Println(gorras(24, "$"))
 
-	pantalon("mezclilla", "azul", "largo", "Sin bolsillos", "Levis")
+	pantalon("mezclilla", "azul", "largo", "Sin bolsillos", "Levis")*/
+
+	var peliculas [3]string
+	peliculas[0] = "Batman v Superman"
+	peliculas[1] = "Avengers 3"
+	peliculas[2] = "Interestelar"
+
+	peliculas2 := [3]string{
+		"Justice League",
+		"Lego Batman",
+		"Batman return"}
+
+	fmt.Println(peliculas)
+	fmt.Println(peliculas2)
 }
 
 func pantalon(caracteristicas ...string) {
