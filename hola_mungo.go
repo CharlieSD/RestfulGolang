@@ -15,10 +15,19 @@ func main() {
 	var num4 float32 = 54
 	fmt.Println("Calculadora 2")
 	calculadora(num3, num4)
+	fmt.Println("-------------")
+	fmt.Println(devolverDatos())
 }
 
 func holaMundo() {
 	fmt.Println("Hola Mundo!!")
+}
+
+func devolverDatos() (dato1 string, dato2 int) {
+	dato1 = "Carlos"
+	dato2 = 25
+
+	return
 }
 
 func calculadora(n1 float32, n2 float32) {
