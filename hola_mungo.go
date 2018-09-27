@@ -5,26 +5,18 @@ import (
 )
 
 func main() {
-	var suma = 8 + 9
-	var resta int = 6 - 4
-	var nombre string = "Carlos "
-	var apellido string = "Espinoza" // Declaración tipada
+	var numero1 = 10.0
+	var numero2 = 6.0
 
-	pais := "México" // Asignación inferida
+	fmt.Print("La suma es: ")
+	fmt.Println(numero1 + numero2)
 
-	const year int = 2018
+	fmt.Print("La resta es: ")
+	fmt.Println(numero1 - numero2)
 
-	fmt.Println(year)
+	fmt.Print("La multiplicación es: ")
+	fmt.Println(numero1 * numero2)
 
-	fmt.Println("Hola Mundo desde Go con " + nombre + apellido + " desde " + pais)
-	fmt.Println(suma)
-	fmt.Println(resta)
-	fmt.Println(nombre)
+	fmt.Print("La división es: ")
+	fmt.Println(numero1 / numero2)
 }
-
-/*
-	En terminal comando:
-	- godoc: muestra la documentación de alguna biblioteca
-	- go fmt [fichero]: da correcto formato del archivo
-	- go build [fichero]: crea el compilado
-*/
