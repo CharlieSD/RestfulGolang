@@ -34,22 +34,31 @@ func main() {
 
 	fmt.Println(peliculas)
 	fmt.Println(peliculas2) */
-	columnas := [8]string{"a", "b", "c", "d", "e", "f", "g", "h"}
-	filas := [8]string{"1", "2", "3", "4", "5", "6", "7", "8"}
+	/*
+		columnas := [8]string{"a", "b", "c", "d", "e", "f", "g", "h"}
+		filas := [8]string{"1", "2", "3", "4", "5", "6", "7", "8"}
 
-	var tablero [8][8]string
-	for i, col := range columnas {
-		for j, fila := range filas {
-			tablero[i][j] = col + fila
+		var tablero [8][8]string
+		for i, col := range columnas {
+			for j, fila := range filas {
+				tablero[i][j] = col + fila
+			}
 		}
-	}
 
-	for i := range columnas {
-		for j := range filas {
-			fmt.Print(tablero[i][j] + " ")
-		}
-		fmt.Println()
-	}
+		for i := range columnas {
+			for j := range filas {
+				fmt.Print(tablero[i][j] + " ")
+			}
+			fmt.Println()
+		} */
+
+	peliculas := []string{}
+	peliculas = append(peliculas, "Batman")
+	peliculas = append(peliculas, "Batman v Superman")
+	peliculas = append(peliculas, "Lego Batman")
+	peliculas = append(peliculas, "Batman Return")
+
+	fmt.Println(peliculas)
 }
 
 func pantalon(caracteristicas ...string) {
