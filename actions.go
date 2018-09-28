@@ -7,6 +7,8 @@ import (
 	"log"
 	"net/http"
 
+	"gopkg.in/mgo.v2/bson"
+
 	"gopkg.in/mgo.v2"
 
 	"github.com/gorilla/mux"
@@ -50,7 +52,25 @@ func MovieShow(w http.ResponseWriter, r *http.Request) {
 	params := mux.Vars(r)
 	movieID := params["id"]
 
-	fmt.Fprintf(w, "Has cargado la pelicula numero %s", movieID)
+	if !bson.IsObjectIdHex(movieID) {
+		w.WriteHeader(404)
+		return
+	}
+
+	oid := bson.ObjectIdHex(movieID)
+
+	results := Movie{}
+
+	err := collection.FindId(oid).One(&results)
+
+	if err != nil {
+		w.WriteHeader(404)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	json.NewEncoder(w).Encode(results)
 }
 
 // MovieAdd ...

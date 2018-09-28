@@ -45,7 +45,7 @@ var routes = Routes{
 	Route{
 		"MovieShow",
 		"GET",
-		"/peliculas/{id}",
+		"/pelicula/{id}",
 		MovieShow},
 	Route{
 		"MovieAdd",
