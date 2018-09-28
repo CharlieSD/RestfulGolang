@@ -140,9 +140,19 @@ func MovieUpdate(w http.ResponseWriter, r *http.Request) {
 	responseMovie(w, 200, movieData)
 }
 
+// Message ...
 type Message struct {
 	Status  string `json:"status"`
 	Message string `json:"message"`
+}
+
+//
+func (M *Message) setStatus(data string) {
+	M.Status = data
+}
+
+func (M *Message) setMessage(data string) {
+	M.Message = data
 }
 
 // MovieRemove ...
@@ -163,7 +173,14 @@ func MovieRemove(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	results := Message{"success", "La pelicula con ID " + movieID + " ha sido borrada correctamente"}
+	// results := Message{"success", "La pelicula con ID " + movieID + " ha sido borrada correctamente"}
+	message := new(Message)
+
+	message.setStatus("success")
+	message.setMessage("La pelicula con ID " + movieID + " ha sido borrada correctamente")
+
+	results := message
+
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
 	json.NewEncoder(w).Encode(results)
