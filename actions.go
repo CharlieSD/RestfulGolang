@@ -4,6 +4,7 @@ package main
 import (
 	"encoding/json"
 	"fmt"
+	"log"
 	"net/http"
 
 	"gopkg.in/mgo.v2"
@@ -23,11 +24,6 @@ func getSession() *mgo.Session {
 
 var collection = getSession().DB("go").C("movies")
 
-var movies = Movies{
-	Movie{"Sin límites", 2013, "Desconocido"},
-	Movie{"Batman Begins", 1999, "Scorsese"},
-	Movie{"Rápidos y furiosos", 2005, "Juan Antonio"}}
-
 // Index ...
 func Index(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hola mundo desde mi servidor Web em Go")
@@ -35,7 +31,18 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 // MovieList ...
 func MovieList(w http.ResponseWriter, r *http.Request) {
-	json.NewEncoder(w).Encode(movies)
+	var results []Movie
+	err := collection.Find(nil).Sort("-_id").All(&results)
+
+	if err != nil {
+		log.Fatal(err)
+	} else {
+		fmt.Println("Resultados", results)
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
+	json.NewEncoder(w).Encode(results)
 }
 
 // MovieShow ...
@@ -66,7 +73,7 @@ func MovieAdd(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	json.NewEncoder(w).Encode(movieData)
 	w.Header().Set("Content-Type", "application/json")
 	w.WriteHeader(200)
+	json.NewEncoder(w).Encode(movieData)
 }
