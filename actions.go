@@ -7,6 +7,8 @@ import (
 	"log"
 	"net/http"
 
+	"gopkg.in/mgo.v2"
+
 	"github.com/gorilla/mux"
 )
 
@@ -14,6 +16,16 @@ var movies = Movies{
 	Movie{"Sin límites", 2013, "Desconocido"},
 	Movie{"Batman Begins", 1999, "Scorsese"},
 	Movie{"Rápidos y furiosos", 2005, "Juan Antonio"}}
+
+func getSession() *mgo.Session {
+	session, err := mgo.Dial("mongodb://localhost")
+
+	if err != nil {
+		panic(err)
+	}
+
+	return session
+}
 
 // Index ...
 func Index(w http.ResponseWriter, r *http.Request) {
@@ -35,6 +47,7 @@ func MovieShow(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Has cargado la pelicula numero %s", movieID)
 }
 
+// MovieAdd ...
 func MovieAdd(w http.ResponseWriter, r *http.Request) {
 	decoder := json.NewDecoder(r.Body)
 
