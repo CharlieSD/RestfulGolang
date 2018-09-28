@@ -1,6 +1,7 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -26,7 +27,13 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 // MovieList ...
 func MovieList(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Esta es la pagina de Películas")
+	movies := Movies{
+		Movie{"Sin límites", 2013, "Desconocido"},
+		Movie{"Batman Begins", 1999, "Scorsese"},
+		Movie{"Rápidos y furiosos", 2005, "Juan Antonio"}}
+	//fmt.Fprintf(w, "Esta es la pagina de Películas")
+
+	json.NewEncoder(w).Encode(movies)
 }
 
 // MovieShow ...
