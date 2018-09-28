@@ -4,18 +4,12 @@ package main
 import (
 	"encoding/json"
 	"fmt"
-	"log"
 	"net/http"
 
 	"gopkg.in/mgo.v2"
 
 	"github.com/gorilla/mux"
 )
-
-var movies = Movies{
-	Movie{"Sin límites", 2013, "Desconocido"},
-	Movie{"Batman Begins", 1999, "Scorsese"},
-	Movie{"Rápidos y furiosos", 2005, "Juan Antonio"}}
 
 func getSession() *mgo.Session {
 	session, err := mgo.Dial("mongodb://localhost")
@@ -27,6 +21,13 @@ func getSession() *mgo.Session {
 	return session
 }
 
+var collection = getSession().DB("go").C("movies")
+
+var movies = Movies{
+	Movie{"Sin límites", 2013, "Desconocido"},
+	Movie{"Batman Begins", 1999, "Scorsese"},
+	Movie{"Rápidos y furiosos", 2005, "Juan Antonio"}}
+
 // Index ...
 func Index(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "Hola mundo desde mi servidor Web em Go")
@@ -34,8 +35,6 @@ func Index(w http.ResponseWriter, r *http.Request) {
 
 // MovieList ...
 func MovieList(w http.ResponseWriter, r *http.Request) {
-	//fmt.Fprintf(w, "Esta es la pagina de Películas")
-
 	json.NewEncoder(w).Encode(movies)
 }
 
@@ -60,7 +59,14 @@ func MovieAdd(w http.ResponseWriter, r *http.Request) {
 
 	defer r.Body.Close()
 
-	log.Println(movieData)
+	err = collection.Insert(movieData)
 
-	movies = append(movies, movieData)
+	if err != nil {
+		w.WriteHeader(500)
+		return
+	}
+
+	json.NewEncoder(w).Encode(movieData)
+	w.Header().Set("Content-Type", "application/json")
+	w.WriteHeader(200)
 }
