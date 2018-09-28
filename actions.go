@@ -103,3 +103,39 @@ func MovieAdd(w http.ResponseWriter, r *http.Request) {
 
 	responseMovie(w, 200, movieData)
 }
+
+// MovieUpdate ...
+func MovieUpdate(w http.ResponseWriter, r *http.Request) {
+	params := mux.Vars(r)
+	movieID := params["id"]
+
+	if !bson.IsObjectIdHex(movieID) {
+		w.WriteHeader(404)
+		return
+	}
+
+	oid := bson.ObjectIdHex(movieID)
+	decoder := json.NewDecoder(r.Body)
+
+	var movieData Movie
+	err := decoder.Decode(&movieData)
+
+	if err != nil {
+		panic(err)
+		w.WriteHeader(501)
+		return
+	}
+
+	defer r.Body.Close()
+
+	document := bson.M{"_id": oid}
+	change := bson.M{"$set": movieData}
+	err = collection.Update(document, change)
+
+	if err != nil {
+		w.WriteHeader(500)
+		return
+	}
+
+	responseMovie(w, 200, movieData)
+}
